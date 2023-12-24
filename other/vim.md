@@ -73,23 +73,60 @@
 ##### 配置文件在家目录下 ~/.vimrc
 
 ```sh
-set hlsearch         "高亮反白
-set backspace=2     "随时退格键删除
-set autoindent       "自动缩进
-set ruler            "可显示最后一行的状态
-set showmode         "左下角状态显示
-set nu               "行号显示
-set bg=dark          "背景色
-set cursorline         "突出显示当前行
-set showmatch         "显示括号匹配
-set ts=4            "设置Tab长度为4空格
-set expandtab        "设置空格为缩进
-set shiftwidth=4    "设置每一级缩进为4个空格
-set autoindent         "继承前一行的缩进方式，适用于多行注释
-set incsearch        "实时搜索
-set ignorecase        "搜索时大小写不敏感
+"设置编码
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
 
-syntax on            "语法检查 高亮
-filetype plugin indent on    " 启用自动补全
-au InsertLeave *.go,*.sh,*.yml write "退出插入模式指定类型的文件自动保存
+"显示
+set nu			"行号显示
+set bg=dark		"背景色
+set hlsearch	"高亮反白
+set ruler		"显示光标
+set showmode	"左下角状态显示
+set cursorline	"突出显示当前行
+set cursorcolumn"突出显示当前列
+
+"缩进
+set expandtab	"设置空格为缩进
+set shiftwidth=4"设置每一级缩进为4个空格
+set backspace=2	"随时退格键删除
+set autoindent	"自动缩进
+set ts=4		"设置Tab长度为4空格
+
+"智能提示
+syntax on		"语法检查 高亮
+set showmatch	"显示括号匹配
+set incsearch	"实时搜索
+set ignorecase	"搜索时大小写不敏感
+
+" 符号配对
+inoremap { {}<Esc>i<CR><Esc>koi<Esc>j<C-S-v><S-%>=j<S-$>xa
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
+inoremap ` ``<Esc>i
+inoremap [ []<Esc>i
+inoremap ( ()<Esc>i
+
+filetype plugin indent on	" 启用自动补全
+"au InsertLeave *.go,*.sh,*.yml write	"退出插入模式指定类型的文件自动保存
+
+" 新建 .sh 文件，自动插入文件头
+autocmd BufNewFile *.sh exec ":call SetTitle()"
+""定义函数SetTitle，自动插入文件头
+func SetTitle()
+    if &filetype == 'sh'
+        call setline(1,"\#########################################################################")
+        call setline(2, "\# Author: grin")
+        call setline(3, "\# Created Time: ".strftime("%c"))
+        call setline(4, "\#########################################################################")
+        call setline(5, "\#!/bin/bash")
+        call setline(6, "")
+    endif
+    " 自动定位到文件末尾
+    normal G
+endfunc
 ```
+
+
+
