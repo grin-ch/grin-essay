@@ -73,32 +73,32 @@
 ##### 配置文件在家目录下 ~/.vimrc
 
 ```sh
-"设置编码
+" 设置编码
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
 
-"显示
-set nu			"行号显示
-set bg=dark		"背景色
-set hlsearch	"高亮反白
-set ruler		"显示光标
-set showmode	"左下角状态显示
-set cursorline	"突出显示当前行
-set cursorcolumn"突出显示当前列
+" 显示
+set nu				" 行号显示
+set bg=dark			" 背景色
+set hlsearch		" 高亮反白
+set ruler			" 显示光标
+set showmode		" 左下角状态显示
+set cursorline		" 突出显示当前行
+set cursorcolumn	" 突出显示当前列
 
-"缩进
-set expandtab	"设置空格为缩进
-set shiftwidth=4"设置每一级缩进为4个空格
-set backspace=2	"随时退格键删除
-set autoindent	"自动缩进
-set ts=4		"设置Tab长度为4空格
+" 缩进
+set expandtab		" 设置空格为缩进
+set shiftwidth=4	" 设置每一级缩进为4个空格
+set backspace=2		" 随时退格键删除
+set autoindent		" 自动缩进
+set ts=4			" 设置Tab长度为4空格
 
-"智能提示
-syntax on		"语法检查 高亮
-set showmatch	"显示括号匹配
-set incsearch	"实时搜索
-set ignorecase	"搜索时大小写不敏感
+" 智能提示
+syntax on			" 语法检查 高亮
+set showmatch		" 显示括号匹配
+set incsearch		" 实时搜索
+set ignorecase		" 搜索时大小写不敏感
 
 " 符号配对
 inoremap { {}<Esc>i<CR><Esc>koi<Esc>j<C-S-v><S-%>=j<S-$>xa
